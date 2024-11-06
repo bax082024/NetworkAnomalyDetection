@@ -7,17 +7,17 @@ class Program
 {
   static void Main(string[] args)
   {
-    // Step 1: Initialize MLContext
+    // Initialize MLContext
     MLContext mlContext = new MLContext();
 
-    // Step 2: Load Data
+    // Load Data
     var data = LoadData(mlContext);
 
-    // Step 3: Define the Processing Pipeline
+    // Processing Pipeline
     var dataProcessPipeline = mlContext.Transforms.Concatenate("Features", nameof(NetworkTrafficData.PacketCount), nameof(NetworkTrafficData.AveragePacketSize))
-      .Append(mlContext.Transforms.NormalizeMinMax("Features")); // Normalizing for better performance
+      .Append(mlContext.Transforms.NormalizeMinMax("Features"));
 
-    // Step 4: Define the Trainer
+    // Trainer
     var trainer = mlContext.BinaryClassification.Trainers.FastTree(
       labelColumnName: "Label",
       featureColumnName: "Features",
@@ -27,19 +27,19 @@ class Program
 
     var trainingPipeline = dataProcessPipeline.Append(trainer);
 
-    // Step 5: Train the Model
+    // Train Model
     var model = trainingPipeline.Fit(data);
 
-    // Step 6: Evaluate the Model
+    // Evaluate Model
     EvaluateModel(mlContext, model, data);
 
-    // Step 7: Test Predictions
+    // Test Predictions
     var predictionEngine = mlContext.Model.CreatePredictionEngine<NetworkTrafficData, AnomalyPrediction>(model);
 
     var testData = new[]
     {
-      new NetworkTrafficData { PacketCount = 150, AveragePacketSize = 500 }, // Example of normal traffic
-      new NetworkTrafficData { PacketCount = 400, AveragePacketSize = 1500 }  // Example of potential anomaly
+      new NetworkTrafficData { PacketCount = 150, AveragePacketSize = 500 }, // normal traffic
+      new NetworkTrafficData { PacketCount = 400, AveragePacketSize = 1500 }  //  anomaly
     };
 
     Console.WriteLine("Predictions:");
@@ -51,7 +51,7 @@ class Program
     }
   }
 
-  // Load synthetic data for training
+  // synthetic data for training
   static IDataView LoadData(MLContext mlContext)
   {
     var data = new[]
@@ -61,7 +61,7 @@ class Program
       new NetworkTrafficData { PacketCount = 130, AveragePacketSize = 750, Label = true },
       new NetworkTrafficData { PacketCount = 110, AveragePacketSize = 680, Label = true },
       new NetworkTrafficData { PacketCount = 100, AveragePacketSize = 500, Label = true },
-      new NetworkTrafficData { PacketCount = 400, AveragePacketSize = 1500, Label = false }, // Anomalous traffic
+      new NetworkTrafficData { PacketCount = 400, AveragePacketSize = 1500, Label = false }, // Anomaly
       new NetworkTrafficData { PacketCount = 450, AveragePacketSize = 1600, Label = false },
       new NetworkTrafficData { PacketCount = 470, AveragePacketSize = 1700, Label = false },
       new NetworkTrafficData { PacketCount = 490, AveragePacketSize = 1800, Label = false }
