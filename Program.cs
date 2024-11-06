@@ -19,35 +19,34 @@ class Program
 
     // Trainer
     var trainer = mlContext.BinaryClassification.Trainers.FastTree(
-      labelColumnName: "Label",
-      featureColumnName: "Features",
-      numberOfLeaves: 10,
-      learningRate: 0.01,
-      numberOfTrees: 20);
+    labelColumnName: "Label",
+    featureColumnName: "Features",
+    numberOfLeaves: 15,       // Moderate complexity
+    learningRate: 0.03,       // Low learning rate for gradual learning
+    numberOfTrees: 100        // Sufficiently large ensemble size
+    );
 
+    // Train and evaluate model
     var trainingPipeline = dataProcessPipeline.Append(trainer);
-
-    // Train Model
     var model = trainingPipeline.Fit(data);
-
-    // Evaluate Model
     EvaluateModel(mlContext, model, data);
 
-    // Test Predictions
+    // Prediction with a custom threshold
+    float anomalyThreshold = 0.6f; // Example threshold
     var predictionEngine = mlContext.Model.CreatePredictionEngine<NetworkTrafficData, AnomalyPrediction>(model);
-
     var testData = new[]
     {
-      new NetworkTrafficData { PacketCount = 150, AveragePacketSize = 500 }, // normal traffic
-      new NetworkTrafficData { PacketCount = 400, AveragePacketSize = 1500 }  //  anomaly
+      new NetworkTrafficData { PacketCount = 150, AveragePacketSize = 500 },  // normal traffic
+      new NetworkTrafficData { PacketCount = 400, AveragePacketSize = 1500 }  // anomaly
     };
 
     Console.WriteLine("Predictions:");
     foreach (var traffic in testData)
     {
       var prediction = predictionEngine.Predict(traffic);
+      string result = prediction.Probability < anomalyThreshold ? "Anomaly" : "Normal";
       Console.WriteLine($"PacketCount: {traffic.PacketCount}, AveragePacketSize: {traffic.AveragePacketSize}");
-      Console.WriteLine($"Prediction: {(prediction.Prediction ? "Normal" : "Anomaly")}, Score: {prediction.Score}, Probability: {prediction.Probability:P2}");
+      Console.WriteLine($"Prediction: {result}, Score: {prediction.Score}, Probability: {prediction.Probability:P2}");
     }
   }
 
