@@ -21,22 +21,22 @@ class Program
     var trainer = mlContext.BinaryClassification.Trainers.FastTree(
     labelColumnName: "Label",
     featureColumnName: "Features",
-    numberOfLeaves: 15,       // Moderate complexity
-    learningRate: 0.03,       // Low learning rate for gradual learning
-    numberOfTrees: 100        // Sufficiently large ensemble size
+    numberOfLeaves: 15,       
+    learningRate: 0.03,       
+    numberOfTrees: 100        
     );
 
     // Train and evaluate model
     var trainingPipeline = dataProcessPipeline.Append(trainer);
     var model = trainingPipeline.Fit(data);
 
-    // Save the Model for Future Use
+    // Save the Model
     mlContext.Model.Save(model, data.Schema, "NetworkAnomalyDetectionModel.zip");
 
     EvaluateModel(mlContext, model, data);
 
-    // Prediction with a custom threshold
-    float anomalyThreshold = 0.6f; // Example threshold
+    // custom threshold
+    float anomalyThreshold = 0.6f; 
     var predictionEngine = mlContext.Model.CreatePredictionEngine<NetworkTrafficData, AnomalyPrediction>(model);
     var testData = new[]
     {
@@ -54,13 +54,12 @@ class Program
     }
   }
 
-  // synthetic data for training
-  // Load more synthetic data for training
+  //Fake data for training
   static IDataView LoadData(MLContext mlContext)
   {
     var data = new[]
     {
-      // Normal traffic samples
+      // Normal Data
       new NetworkTrafficData { PacketCount = 100, AveragePacketSize = 500, Label = true },
       new NetworkTrafficData { PacketCount = 120, AveragePacketSize = 600, Label = true },
       new NetworkTrafficData { PacketCount = 130, AveragePacketSize = 750, Label = true },
@@ -72,7 +71,7 @@ class Program
       new NetworkTrafficData { PacketCount = 200, AveragePacketSize = 1000, Label = true },
       new NetworkTrafficData { PacketCount = 220, AveragePacketSize = 1050, Label = true },
       
-      // Anomalous traffic samples
+      // Anomaly Data
       new NetworkTrafficData { PacketCount = 400, AveragePacketSize = 1500, Label = false },
       new NetworkTrafficData { PacketCount = 450, AveragePacketSize = 1600, Label = false },
       new NetworkTrafficData { PacketCount = 470, AveragePacketSize = 1700, Label = false },
@@ -87,7 +86,6 @@ class Program
 
     return mlContext.Data.LoadFromEnumerable(data);
   }
-
 
   // Evaluate model accuracy
   static void EvaluateModel(MLContext mlContext, ITransformer model, IDataView data)
