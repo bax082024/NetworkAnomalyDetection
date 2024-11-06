@@ -29,6 +29,11 @@ class Program
 
     // Train Model
     var model = trainingPipeline.Fit(data);
+
+    EvaluateModel(mlContext, model, data);
+
+    // Prediction test
+    var predictionEngine = mlContext.Model.CreatePredictionEngine<NetworkTrafficData, AnomalyPrediction>(model);
   }
 
 
