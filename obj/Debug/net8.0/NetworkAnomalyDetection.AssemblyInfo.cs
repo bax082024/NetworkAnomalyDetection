@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NetworkAnomalyDetection")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+99f731141a0efd0f20338e89bd9d9a3982aca5c2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a4e548848a39b2a6ee0e75cb8822c472775c0d23")]
 [assembly: System.Reflection.AssemblyProductAttribute("NetworkAnomalyDetection")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NetworkAnomalyDetection")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

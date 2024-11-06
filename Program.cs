@@ -21,9 +21,9 @@ class Program
     var trainer = mlContext.BinaryClassification.Trainers.FastTree(
       labelColumnName: "Label",
       featureColumnName: "Features",
-      numberOfLeaves: 50,
-      learningRate: 0.05,
-      numberOfTrees: 200);
+      numberOfLeaves: 10,
+      learningRate: 0.01,
+      numberOfTrees: 20);
 
     var trainingPipeline = dataProcessPipeline.Append(trainer);
 
@@ -52,23 +52,39 @@ class Program
   }
 
   // synthetic data for training
+  // Load more synthetic data for training
   static IDataView LoadData(MLContext mlContext)
   {
     var data = new[]
     {
+      // Normal traffic samples
+      new NetworkTrafficData { PacketCount = 100, AveragePacketSize = 500, Label = true },
       new NetworkTrafficData { PacketCount = 120, AveragePacketSize = 600, Label = true },
-      new NetworkTrafficData { PacketCount = 200, AveragePacketSize = 800, Label = true },
       new NetworkTrafficData { PacketCount = 130, AveragePacketSize = 750, Label = true },
       new NetworkTrafficData { PacketCount = 110, AveragePacketSize = 680, Label = true },
-      new NetworkTrafficData { PacketCount = 100, AveragePacketSize = 500, Label = true },
-      new NetworkTrafficData { PacketCount = 400, AveragePacketSize = 1500, Label = false }, // Anomaly
+      new NetworkTrafficData { PacketCount = 150, AveragePacketSize = 520, Label = true },
+      new NetworkTrafficData { PacketCount = 160, AveragePacketSize = 700, Label = true },
+      new NetworkTrafficData { PacketCount = 140, AveragePacketSize = 800, Label = true },
+      new NetworkTrafficData { PacketCount = 180, AveragePacketSize = 900, Label = true },
+      new NetworkTrafficData { PacketCount = 200, AveragePacketSize = 1000, Label = true },
+      new NetworkTrafficData { PacketCount = 220, AveragePacketSize = 1050, Label = true },
+      
+      // Anomalous traffic samples
+      new NetworkTrafficData { PacketCount = 400, AveragePacketSize = 1500, Label = false },
       new NetworkTrafficData { PacketCount = 450, AveragePacketSize = 1600, Label = false },
       new NetworkTrafficData { PacketCount = 470, AveragePacketSize = 1700, Label = false },
-      new NetworkTrafficData { PacketCount = 490, AveragePacketSize = 1800, Label = false }
+      new NetworkTrafficData { PacketCount = 490, AveragePacketSize = 1800, Label = false },
+      new NetworkTrafficData { PacketCount = 510, AveragePacketSize = 1900, Label = false },
+      new NetworkTrafficData { PacketCount = 530, AveragePacketSize = 2000, Label = false },
+      new NetworkTrafficData { PacketCount = 550, AveragePacketSize = 2100, Label = false },
+      new NetworkTrafficData { PacketCount = 570, AveragePacketSize = 2200, Label = false },
+      new NetworkTrafficData { PacketCount = 590, AveragePacketSize = 2300, Label = false },
+      new NetworkTrafficData { PacketCount = 610, AveragePacketSize = 2400, Label = false }
     };
 
     return mlContext.Data.LoadFromEnumerable(data);
   }
+
 
   // Evaluate model accuracy
   static void EvaluateModel(MLContext mlContext, ITransformer model, IDataView data)
