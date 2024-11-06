@@ -15,5 +15,14 @@ public class NetworkTrafficData
   public float IntervalBetweenPackets { get; set; }
 
   [LoadColumn(4)]
+  public float PacketFrequency { get; set; }
+
+  [LoadColumn(5)]
+  public float TotalDataSent { get; set; }
+
+  [LoadColumn(6)]
+  public float SourceDestinationRatio { get; set; }
+
+  [LoadColumn(7)]
   public bool Label { get; set; }
 }
