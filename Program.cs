@@ -29,6 +29,10 @@ class Program
     // Train and evaluate model
     var trainingPipeline = dataProcessPipeline.Append(trainer);
     var model = trainingPipeline.Fit(data);
+
+    // Save the Model for Future Use
+    mlContext.Model.Save(model, data.Schema, "NetworkAnomalyDetectionModel.zip");
+
     EvaluateModel(mlContext, model, data);
 
     // Prediction with a custom threshold
