@@ -10,6 +10,7 @@
 **Last test results:**
 
 - Cross-validated Model accuracy: 97,22 %
+  
 - AUC: 100,00 %
 - F1 Score: 96,97 %
 - Model accuracy: 100,00 %
