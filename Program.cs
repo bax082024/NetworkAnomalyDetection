@@ -34,6 +34,14 @@ class Program
 
     // Prediction test
     var predictionEngine = mlContext.Model.CreatePredictionEngine<NetworkTrafficData, AnomalyPrediction>(model);
+
+    var testData = new[]
+    {
+      new NetworkTrafficData { PacketCount = 150, AveragePacketSize = 500 }, // normal traffic
+      new NetworkTrafficData { PacketCount = 400, AveragePacketSize = 1500 }
+    };
+
+    
   }
 
 
