@@ -6,7 +6,7 @@
 - I made this to practice Fastree parameters.
 - detects fake anomaly data 
 
-
+as
 **Last test results:**
 
 - Model accuracy: 100,00 %

@@ -59,7 +59,7 @@ class Program
   {
     var data = new[]
     {
-      // Normal Data
+      // "Normal" Data
       new NetworkTrafficData { PacketCount = 100, AveragePacketSize = 500, Label = true },
       new NetworkTrafficData { PacketCount = 120, AveragePacketSize = 600, Label = true },
       new NetworkTrafficData { PacketCount = 130, AveragePacketSize = 750, Label = true },
@@ -71,7 +71,7 @@ class Program
       new NetworkTrafficData { PacketCount = 200, AveragePacketSize = 1000, Label = true },
       new NetworkTrafficData { PacketCount = 220, AveragePacketSize = 1050, Label = true },
       
-      // Anomaly Data
+      // "Anomaly" Data
       new NetworkTrafficData { PacketCount = 400, AveragePacketSize = 1500, Label = false },
       new NetworkTrafficData { PacketCount = 450, AveragePacketSize = 1600, Label = false },
       new NetworkTrafficData { PacketCount = 470, AveragePacketSize = 1700, Label = false },
