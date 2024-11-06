@@ -1,2 +1,20 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using System;
+using Microsoft.ML;
+using Microsoft.ML.Data;
+using System.Linq;
+
+class Program
+{
+  static void Main(string[] args)
+  {
+    // initialize MLContext
+    MLContext mlContext = new MLContext();
+
+    // Load data
+    var data = LoadData(mlContext);
+
+    // Define processing pipeline
+  }
+
+
+}
