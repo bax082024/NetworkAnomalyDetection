@@ -89,7 +89,7 @@ class Program
   {
     var data = new[]
     {
-      // Normal traffic samples
+      // Normal samples
       new NetworkTrafficData { PacketCount = 100, AveragePacketSize = 500, PacketDuration = 100, IntervalBetweenPackets = 50, PacketFrequency = 5, TotalDataSent = 2500, SourceDestinationRatio = 1, Label = true },
       new NetworkTrafficData { PacketCount = 120, AveragePacketSize = 600, PacketDuration = 120, IntervalBetweenPackets = 55, PacketFrequency = 4, TotalDataSent = 2880, SourceDestinationRatio = 1.2f, Label = true },
       new NetworkTrafficData { PacketCount = 130, AveragePacketSize = 750, PacketDuration = 150, IntervalBetweenPackets = 60, PacketFrequency = 4.5f, TotalDataSent = 3250, SourceDestinationRatio = 1.1f, Label = true },
@@ -101,7 +101,7 @@ class Program
       new NetworkTrafficData { PacketCount = 200, AveragePacketSize = 1000, PacketDuration = 180, IntervalBetweenPackets = 60, PacketFrequency = 3.2f, TotalDataSent = 5000, SourceDestinationRatio = 1.0f, Label = true },
       new NetworkTrafficData { PacketCount = 220, AveragePacketSize = 1050, PacketDuration = 195, IntervalBetweenPackets = 65, PacketFrequency = 2.9f, TotalDataSent = 5250, SourceDestinationRatio = 1.2f, Label = true },
 
-      // More normal samples
+      // normal samples
       new NetworkTrafficData { PacketCount = 135, AveragePacketSize = 700, PacketDuration = 140, IntervalBetweenPackets = 57, PacketFrequency = 5.6f, TotalDataSent = 3100, SourceDestinationRatio = 1.15f, Label = true },
       new NetworkTrafficData { PacketCount = 145, AveragePacketSize = 720, PacketDuration = 150, IntervalBetweenPackets = 59, PacketFrequency = 5.7f, TotalDataSent = 3240, SourceDestinationRatio = 1.17f, Label = true },
       new NetworkTrafficData { PacketCount = 170, AveragePacketSize = 760, PacketDuration = 160, IntervalBetweenPackets = 55, PacketFrequency = 5.2f, TotalDataSent = 3600, SourceDestinationRatio = 1.1f, Label = true },
@@ -113,14 +113,14 @@ class Program
       new NetworkTrafficData { PacketCount = 225, AveragePacketSize = 880, PacketDuration = 170, IntervalBetweenPackets = 61, PacketFrequency = 3.5f, TotalDataSent = 5600, SourceDestinationRatio = 1.1f, Label = true },
       new NetworkTrafficData { PacketCount = 190, AveragePacketSize = 780, PacketDuration = 165, IntervalBetweenPackets = 63, PacketFrequency = 4.0f, TotalDataSent = 4300, SourceDestinationRatio = 1.15f, Label = true },
 
-      // Anomalous traffic samples
+      // Anomaly samples
       new NetworkTrafficData { PacketCount = 400, AveragePacketSize = 1500, PacketDuration = 300, IntervalBetweenPackets = 200, PacketFrequency = 10, TotalDataSent = 6000, SourceDestinationRatio = 3, Label = false },
       new NetworkTrafficData { PacketCount = 450, AveragePacketSize = 1600, PacketDuration = 350, IntervalBetweenPackets = 220, PacketFrequency = 11, TotalDataSent = 7200, SourceDestinationRatio = 2.8f, Label = false },
       new NetworkTrafficData { PacketCount = 470, AveragePacketSize = 1700, PacketDuration = 400, IntervalBetweenPackets = 250, PacketFrequency = 12, TotalDataSent = 7650, SourceDestinationRatio = 3.2f, Label = false },
       new NetworkTrafficData { PacketCount = 490, AveragePacketSize = 1800, PacketDuration = 420, IntervalBetweenPackets = 260, PacketFrequency = 13, TotalDataSent = 8000, SourceDestinationRatio = 3.5f, Label = false },
       new NetworkTrafficData { PacketCount = 510, AveragePacketSize = 1900, PacketDuration = 430, IntervalBetweenPackets = 270, PacketFrequency = 14, TotalDataSent = 8500, SourceDestinationRatio = 3.3f, Label = false },
       
-      // More anomalous samples
+      // Anomaly samples
       new NetworkTrafficData { PacketCount = 530, AveragePacketSize = 2000, PacketDuration = 440, IntervalBetweenPackets = 280, PacketFrequency = 14.5f, TotalDataSent = 9000, SourceDestinationRatio = 3.4f, Label = false },
       new NetworkTrafficData { PacketCount = 550, AveragePacketSize = 2100, PacketDuration = 450, IntervalBetweenPackets = 290, PacketFrequency = 15, TotalDataSent = 10000, SourceDestinationRatio = 3.8f, Label = false },
       new NetworkTrafficData { PacketCount = 570, AveragePacketSize = 2200, PacketDuration = 460, IntervalBetweenPackets = 300, PacketFrequency = 16, TotalDataSent = 10500, SourceDestinationRatio = 3.9f, Label = false },
