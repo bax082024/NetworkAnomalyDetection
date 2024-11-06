@@ -1,4 +1,4 @@
-# NetworkAnomalyDetection
+# Network Anomaly Detection
 
 
 ## Introduction
@@ -6,7 +6,7 @@
 - I made this to practice Fastree parameters.
 - detects fake anomaly data 
 
-asd
+
 **Last test results:**
 
 - Cross-validated Model accuracy: 97,22 %
@@ -19,5 +19,6 @@ asd
 
 
 ### How to use
+
 
 - dotnet run
