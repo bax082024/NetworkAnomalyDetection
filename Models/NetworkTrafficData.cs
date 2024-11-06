@@ -9,5 +9,11 @@ public class NetworkTrafficData
   public float AveragePacketSize { get; set; }
 
   [LoadColumn(2)]
-  public bool Label { get; set; } // true for normal traffic and false for anomaly
+  public float PacketDuration { get; set; } // true for normal traffic and false for anomaly
+
+  [LoadColumn(3)]
+  public float IntervalBetweenPackets { get; set; }
+
+  [LoadColumn(4)]
+  public bool Label { get; set; }
 }
